@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <body>
     <div id="root"></div>
 </body>
@@ -9,22 +8,16 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countup() {
-        counter = counter + 1;
-        render();
-    }
-    function render() {
-        ReactDOM.render(<Container />, root);
-    }
-    function Container() {
-        return (<div>
-            <h3>Total clicks: {counter}</h3>
-            <button onClick={countup}>Click me</button>
-        </div>
+    function App() {
+        const [counter, modifier] = React.useState(0);
+        ddddddddddddd
+        return (
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button>Click me</button>
+            </div>
         );
-    }
-    render();
+    } 
+    ReactDOM.render(<App />, root);
 </script>
-
 </html>
