@@ -1,12 +1,27 @@
-import Button from "./Button";
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
-    <div>
-      <h1>Welcome back!!!</h1>
-      <Button text={"Continue"}/>
-    </div>
-  );
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([])
+  const getMovies = async () => {
+    const json = await (
+      await fetch(
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+      )
+    ).json();
+    setMovies(json.data.movies);
+    setLoading(false);
+  };
+  useEffect(() => {
+    fetch("https://api.coinpaprika.com/v1/tickers")
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+      });
+    getMovies();
+  }, []);
+  return <div> {loading ? <h1>Loading...</h1> : null} </div>;
 }
 
-export default App;
+export default App; 
